@@ -12,7 +12,6 @@
         .tabs {
             overflow: hidden;
             margin-bottom: 20px;
-            text-align: center; /* جعل التبويبات في المنتصف */
         }
         .tab-button {
             cursor: pointer;
@@ -23,8 +22,7 @@
             display: inline-block;
             color: white;
             font-size: 16px;
-            margin: 5px;
-            border-radius: 5px;
+            margin-left: 5px;
         }
         .tab-button.active {
             background: #007bff;
@@ -34,7 +32,6 @@
             background: #333;
             padding: 20px;
             border-radius: 10px;
-            margin-top: 20px;
         }
         .tab-content.active {
             display: block;
@@ -87,7 +84,7 @@
             style="border: none; overflow: hidden; width: 100%; height: 176px;"></iframe>
 </div>
 
-<!-- تبويب التاريخ اليوم (تعديل الخط هنا) -->
+<!-- تبويب التاريخ اليوم -->
 <div id="dates" class="tab-content">
     <h3>التاريخ اليوم</h3>
     <div class="date-section">
@@ -98,24 +95,6 @@
         <p>الشهر الهجري: <span id="hijri-month"></span></p>
     </div>
 </div>
-
-<!-- إضافة خط Noto Nastaliq Urdu من Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
-
-<style>
-    body {
-        font-family: 'Noto Nastaliq Urdu', sans-serif;
-        margin: 0; /* إزالة الهوامش الافتراضية */
-        display: flex;
-        justify-content: center; /* توسيط أفقي */
-        align-items: center; /* توسيط عمودي */
-        height: 100vh; /* جعل الجسم يأخذ ارتفاع الصفحة بالكامل */
-    }
-    p {
-        font-size: 24px; /* حجم الخط */
-        text-align: center; /* توسيط النص أفقيًا داخل العنصر */
-    }
-</style>
 
 <script src="https://widgets.365scores.com/main.js"></script>
 
