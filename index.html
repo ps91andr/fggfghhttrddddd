@@ -99,8 +99,6 @@
             style="border: none; overflow: hidden; width: 100%; height: 176px;">
     </iframe>
 
-    <h3>اسم اليوم الميلادي والهجري</h3>
-
     <!-- عرض اسم اليوم الميلادي -->
     <span id="day-name"></span>
 
@@ -111,7 +109,6 @@
         document.getElementById("day-name").textContent = `اليوم: ${dayName}`;
     </script>
 
-    <h3>التاريخ الميلادي</h3>
     <p><span id="gregorian-month"></span></p>
 
     <script>
@@ -125,7 +122,6 @@
         getGregorianMonth();
     </script>
 
-    <h3>التاريخ الهجري</h3>
     <p><span id="hijri-month"></span></p>
 
     <script>
@@ -139,8 +135,6 @@
         getHijriMonth();
     </script>
 
-    <h3>التاريخ الميلادي الكامل</h3>
-    <p>تاريخ اليوم ميلادي: <span id="gregorian-date"></span></p>
 
     <script>
         function getGregorianDate() {
@@ -155,7 +149,6 @@
         getGregorianDate();
     </script>
 
-    <h3>التاريخ الهجري الكامل</h3>
     <p>تاريخ اليوم هجري: <span id="hijri-date"></span></p>
 
     <script>
