@@ -1,18 +1,10 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إحصائيات الفرق وأوقات الصلاة - 365Scores</title>
-    
-    <!-- إضافة خط Noto Nastaliq Urdu من Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
-    
+    <title>إحصائيات الفرق والتاريخ وأوقات الصلاة</title>
     <style>
         body {
-            font-family: 'Noto Nastaliq Urdu', sans-serif;
-            font-size: 30px; /* تكبير حجم الخط */
-            text-align: center; /* توسيط النص */
+            font-family: Arial, sans-serif;
             background-color: #222;
             color: white;
             direction: rtl;
@@ -50,28 +42,27 @@
         a {
             color: #007bff;
         }
+        .date-section p {
+            font-size: 24px;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
 
-<h2>إحصائيات الفرق وأوقات الصلاة</h2>
+<h2>إحصائيات الفرق والتاريخ وأوقات الصلاة</h2>
 
 <div class="tabs">
     <button class="tab-button active" onclick="openTab(event, 'barcelona')">برشلونة</button>
     <button class="tab-button" onclick="openTab(event, 'real-madrid')">ريال مدريد</button>
     <button class="tab-button" onclick="openTab(event, 'prayer-times')">أوقات الصلاة</button>
+    <button class="tab-button" onclick="openTab(event, 'dates')">التاريخ اليوم</button>
 </div>
 
 <!-- تبويب برشلونة -->
 <div id="barcelona" class="tab-content active">
     <h3>إحصائيات برشلونة</h3>
-    <div data-widget-type="entityScores" 
-         data-entity-type="team" 
-         data-entity-id="132" 
-         data-lang="ar" 
-         data-widget-id="70f6ecaa-4207-42ef-9812-16247c400965" 
-         data-theme="dark">
-    </div>
+    <div data-widget-type="entityScores" data-entity-type="team" data-entity-id="132" data-lang="ar" data-widget-id="70f6ecaa-4207-42ef-9812-16247c400965" data-theme="dark"></div>
     <div id="powered-by">
         <a href="https://www.365scores.com/ar" target="_blank">365Scores.com</a> مزود من
     </div>
@@ -80,13 +71,7 @@
 <!-- تبويب ريال مدريد -->
 <div id="real-madrid" class="tab-content">
     <h3>إحصائيات ريال مدريد</h3>
-    <div data-widget-type="entityScores" 
-         data-entity-type="team" 
-         data-entity-id="131" 
-         data-lang="ar" 
-         data-widget-id="7c565ae2-376c-4c0e-9938-8a869cd853b4" 
-         data-theme="dark">
-    </div>
+    <div data-widget-type="entityScores" data-entity-type="team" data-entity-id="131" data-lang="ar" data-widget-id="7c565ae2-376c-4c0e-9938-8a869cd853b4" data-theme="dark"></div>
     <div id="powered-by">
         <a href="https://www.365scores.com/ar" target="_blank">365Scores.com</a> مزود من
     </div>
@@ -95,74 +80,20 @@
 <!-- تبويب أوقات الصلاة -->
 <div id="prayer-times" class="tab-content">
     <h3>أوقات الصلاة - صنعاء</h3>
-    <iframe src="https://timesprayer.com/widgets.php?frame=1&amp;lang=ar&amp;name=sanaa&amp;sound=true&amp;avachang=true&amp;time=0&amp;fcolor=9B0041&amp;tcolor=0018B4" 
-            style="border: none; overflow: hidden; width: 100%; height: 176px;">
-    </iframe>
+    <iframe src="https://timesprayer.com/widgets.php?frame=1&amp;lang=ar&amp;name=sanaa&amp;sound=true&amp;avachang=true&amp;time=0&amp;fcolor=9B0041&amp;tcolor=0018B4"
+            style="border: none; overflow: hidden; width: 100%; height: 176px;"></iframe>
+</div>
 
-    <!-- عرض اسم اليوم الميلادي -->
-    <span id="day-name"></span>
-
-    <script>
-        const daysOfWeek = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
-        const today = new Date();
-        const dayName = daysOfWeek[today.getDay()];
-        document.getElementById("day-name").textContent = `اليوم: ${dayName}`;
-    </script>
-
-    <p><span id="gregorian-month"></span></p>
-
-    <script>
-        function getGregorianMonth() {
-            const today = new Date();
-            const gregorianMonth = new Intl.DateTimeFormat('ar-EG', {
-                month: 'long'
-            }).format(today) + ' ' + (today.getMonth() + 1);
-            document.getElementById('gregorian-month').textContent = `التاريخ الميلادي: ${gregorianMonth}`;
-        }
-        getGregorianMonth();
-    </script>
-
-    <p><span id="hijri-month"></span></p>
-
-    <script>
-        function getHijriMonth() {
-            const today = new Date();
-            const hijriMonth = new Intl.DateTimeFormat('ar-SA-u-ca-islamic', {
-                month: 'long'
-            }).format(today) + ' ' + (new Intl.DateTimeFormat('ar-SA-u-ca-islamic', { month: 'numeric' }).format(today));
-            document.getElementById('hijri-month').textContent = `التاريخ الهجري: ${hijriMonth}`;
-        }
-        getHijriMonth();
-    </script>
-
-
-    <script>
-        function getGregorianDate() {
-            const today = new Date();
-            const gregorianDate = new Intl.DateTimeFormat('ar-EG', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            }).format(today);
-            document.getElementById('gregorian-date').textContent = gregorianDate;
-        }
-        getGregorianDate();
-    </script>
-
-    <p>تاريخ اليوم هجري: <span id="hijri-date"></span></p>
-
-    <script>
-        function getHijriDate() {
-            const today = new Date();
-            const hijriDate = new Intl.DateTimeFormat('ar-SA-u-ca-islamic', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            }).format(today);
-            document.getElementById('hijri-date').textContent = hijriDate;
-        }
-        getHijriDate();
-    </script>
+<!-- تبويب التاريخ اليوم -->
+<div id="dates" class="tab-content">
+    <h3>التاريخ اليوم</h3>
+    <div class="date-section">
+        <p>اسم اليوم: <span id="day-name"></span></p>
+        <p>تاريخ اليوم الميلادي: <span id="gregorian-date"></span></p>
+        <p>الشهر الميلادي: <span id="gregorian-month"></span></p>
+        <p>تاريخ اليوم الهجري: <span id="hijri-date"></span></p>
+        <p>الشهر الهجري: <span id="hijri-month"></span></p>
+    </div>
 </div>
 
 <script src="https://widgets.365scores.com/main.js"></script>
@@ -183,6 +114,38 @@
         document.getElementById(tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
     }
+
+    // تحديث معلومات التاريخ
+    function updateDates() {
+        const daysOfWeek = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+        const today = new Date();
+
+        // اسم اليوم
+        document.getElementById("day-name").textContent = daysOfWeek[today.getDay()];
+
+        // التاريخ الميلادي الكامل
+        document.getElementById("gregorian-date").textContent = new Intl.DateTimeFormat('ar-EG', {
+            year: 'numeric', month: 'long', day: 'numeric'
+        }).format(today);
+
+        // الشهر الميلادي
+        document.getElementById("gregorian-month").textContent = new Intl.DateTimeFormat('ar-EG', {
+            month: 'long'
+        }).format(today) + ' ' + (today.getMonth() + 1);
+
+        // التاريخ الهجري
+        document.getElementById("hijri-date").textContent = new Intl.DateTimeFormat('ar-SA-u-ca-islamic', {
+            year: 'numeric', month: 'long', day: 'numeric'
+        }).format(today);
+
+        // الشهر الهجري
+        document.getElementById("hijri-month").textContent = new Intl.DateTimeFormat('ar-SA-u-ca-islamic', {
+            month: 'long'
+        }).format(today) + ' ' + new Intl.DateTimeFormat('ar-SA-u-ca-islamic', { month: 'numeric' }).format(today);
+    }
+
+    // تحديث التواريخ بمجرد تحميل الصفحة
+    updateDates();
 </script>
 
 </body>
