@@ -1,25 +1,93 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <title>إحصائيات فريق - 365Scores</title>
+    <title>إحصائيات الفرق - 365Scores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+        }
+        .tabs {
+            overflow: hidden;
+        }
+        .tab-button {
+            cursor: pointer;
+            padding: 10px 20px;
+            background: #ddd;
+            border: none;
+            outline: none;
+            display: inline-block;
+        }
+        .tab-button.active {
+            background: #444;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        #powered-by {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<h2>إحصائيات فريق برشلونة</h2>
+<h2>إحصائيات الفرق</h2>
 
-<div data-widget-type="entityScores" 
-     data-entity-type="team" 
-     data-entity-id="132" 
-     data-lang="ar" 
-     data-widget-id="70f6ecaa-4207-42ef-9812-16247c400965" 
-     data-theme="dark">
+<div class="tabs">
+    <button class="tab-button active" onclick="openTab(event, 'real-madrid')">ريال مدريد</button>
+    <button class="tab-button" onclick="openTab(event, 'barcelona')">برشلونة</button>
 </div>
 
-<div id="powered-by">
-    <a id="powered-by-link" href="https://www.365scores.com/ar" target="_blank">365Scores.com</a> مزود من
+<div id="real-madrid" class="tab-content active">
+    <div data-widget-type="entityScores" 
+         data-entity-type="team" 
+         data-entity-id="131" 
+         data-lang="ar" 
+         data-widget-id="7c565ae2-376c-4c0e-9938-8a869cd853b4" 
+         data-theme="dark">
+    </div>
+    <div id="powered-by">
+        <a id="powered-by-link" href="https://www.365scores.com/ar" target="_blank">365Scores.com</a> مزود من
+    </div>
+</div>
+
+<div id="barcelona" class="tab-content">
+    <div data-widget-type="entityScores" 
+         data-entity-type="team" 
+         data-entity-id="132" 
+         data-lang="ar" 
+         data-widget-id="7c565ae2-376c-4c0e-9938-8a869cd853b4" 
+         data-theme="dark">
+    </div>
+    <div id="powered-by">
+        <a id="powered-by-link" href="https://www.365scores.com/ar" target="_blank">365Scores.com</a> مزود من
+    </div>
 </div>
 
 <script src="https://widgets.365scores.com/main.js"></script>
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabButtons;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+            tabContent[i].classList.remove("active");
+        }
+        tabButtons = document.getElementsByClassName("tab-button");
+        for (i = 0; i < tabButtons.length; i++) {
+            tabButtons[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
 
 </body>
 </html>
